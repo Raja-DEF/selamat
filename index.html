@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Lulus SNBP, Sayangku 💖</title>
+  <style>
+    :root {
+      --pink1: #ff8fab;
+      --pink2: #ffb3c6;
+      --pink3: #ffc2d1;
+      --pink4: #ffe5ec;
+      --rose: #d63384;
+      --text: #5a3d4d;
+      --white: rgba(255,255,255,0.88);
+      --shadow: 0 12px 35px rgba(214, 51, 132, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: "Segoe UI", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.35), transparent 25%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.2), transparent 25%),
+        linear-gradient(135deg, var(--pink1), var(--pink2), var(--pink3));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    .blur-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.45;
+      z-index: 0;
+      animation: floatOrb 8s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 220px;
+      height: 220px;
+      background: #fff0f5;
+      top: 5%;
+      left: -40px;
+    }
+
+    .orb2 {
+      width: 240px;
+      height: 240px;
+      background: #ffd6e0;
+      bottom: 5%;
+      right: -50px;
+      animation-delay: 2s;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 390px;
+      background: rgba(255,255,255,0.16);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1s ease;
+    }
+
+    .top-badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.38);
+      color: var(--rose);
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .photo-wrap {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #fff, #ffd6e7, #ff9ebb);
+      box-shadow: var(--shadow);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      background: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      font-size: 1.65rem;
+      line-height: 1.35;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      margin-bottom: 10px;
+    }
+
+    .sub {
+      text-align: center;
+      color: #fffafc;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+      opacity: 0.95;
+    }
+
+    .letter-box {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 20px 18px;
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .typing {
+      min-height: 90px;
+      line-height: 1.7;
+      font-size: 0.97rem;
+      white-space: pre-wrap;
+    }
+
+    .message {
+      margin-top: 14px;
+      font-size: 0.96rem;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.8s ease;
+    }
+
+    .message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .highlight {
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    .signature {
+      margin-top: 14px;
+      text-align: right;
+      color: var(--rose);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 13px 14px;
+      font-size: 0.93rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #ff5d8f, #ff8fab);
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 93, 143, 0.28);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.85);
+      color: var(--rose);
+      box-shadow: 0 8px 20px rgba(255,255,255,0.18);
+    }
+
+    .mini-note {
+      text-align: center;
+      color: white;
+      margin-top: 14px;
+      min-height: 24px;
+      font-size: 0.93rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -20px;
+      pointer-events: none;
+      z-index: 1;
+      animation: fly linear forwards;
+      opacity: 0.95;
+      filter: drop-shadow(0 6px 12px rgba(255, 105, 180, 0.25));
+    }
+
+    .sparkle {
+      position: fixed;
+      color: rgba(255,255,255,0.8);
+      pointer-events: none;
+      z-index: 1;
+      animation: twinkle 2.6s ease-in-out infinite;
+    }
+
+    .music-note {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.28);
+      color: white;
+      backdrop-filter: blur(10px);
+      font-size: 1.1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    @keyframes fly {
+      0% {
+        transform: translateY(0) scale(0.8) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-110vh) scale(1.4) rotate(18deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-18px) scale(1.08); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+
+    @media (max-width: 420px) {
+      .card {
+        padding: 18px 16px;
+        border-radius: 24px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+
+      .typing,
+      .message {
+        font-size: 0.94rem;
+      }
+
+      .photo-wrap {
+        width: 108px;
+        height: 108px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="blur-orb orb1"></div>
+  <div class="blur-orb orb2"></div>
+
+  <div class="card">
+    <div class="music-note" id="musicIcon">🎵</div>
+
+    <div class="top-badge">💖 Spesial untuk cinta terbaikku 💖</div>
+
+    <div class="photo-wrap">
+      <img src="pict5.jpeg" alt="Foto Pacar" />
+    </div>
+
+    <h1>Selamat Lulus SNBP, <br> cayanggggggggg kuuuuuu 🎓</h1>
+    <div class="sub">lajaaaa bahagiaaa dann banggaaaa bangettttt camaaa bitaaaa.</div>
+
+    <div class="letter-box">
+      <div class="typing" id="typingText"></div>
+
+      <div class="message" id="message1">
+        lajaaaa auuuu perjalanannn bitaaaa ndaaaaa mudahhh.Adaa capekk,adaa atutt,adaa overthinkingg,
+        tapiii bitaaaa tetapp beltahann dann kacii versii telbaikk darii dirii bitaaa wayaupunn cecuaii hayapann naa.
+      </div>
+
+      <div class="message" id="message2">
+        dan cekayanggg,cemuaa itu telbayarr.Kelulusann inii adalahh bukti kalauu
+        <span class="highlight">bitaaa hebattt,kuattt,dann pantass untukk cemuaa hall baikkk</span>.
+      </div>
+
+      <div class="message" id="message3">
+        cemogaa kampuss dann perjalanann baruu nantiii membawaa bitaaa kee banyakkk mimpiii indahhh,
+        oyangg-oyangg baikk,pengalamann hebatt,dann masaa depann yangg telbaikkk untukk bitaaaa.
+      </div>
+
+      <div class="message" id="message4">
+        apaa punn yangg teljadii nantii,lajaaaa akann tetapp jadii oyangg yangg ceyayu banggaa camaa bitaaa,
+        mendukungg bitaaa,dann cayanggg camaa bitaaaa.
+      </div>
+
+      <div class="signature">
+        denann cintaaa,<br>lajaaaaa 🤍
+      </div>
+    </div>
+
+    <div class="controls">
+      <button class="btn-primary" onclick="startSurprise()">Buka Kejutannya 💌</button>
+      <button class="btn-secondary" onclick="sendHug()">Peluk Virtual 🤍</button>
+    </div>
+
+    <div class="mini-note" id="miniNote"></div>
+  </div>
+
+  <audio id="bgMusic" loop>
+    <source src="audio5.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const introText =
+      "cayanggggkuuuu,ceyamattt atasss kelulusann SNBP naaa.lajaaa banggaaa banetttt camaaa bitaaaa... 💖";
+
+    const typingText = document.getElementById("typingText");
+    const messages = [
+      document.getElementById("message1"),
+      document.getElementById("message2"),
+      document.getElementById("message3"),
+      document.getElementById("message4")
+    ];
+    const miniNote = document.getElementById("miniNote");
+    const bgMusic = document.getElementById("bgMusic");
+
+    let started = false;
+    let musicPlayed = false;
+
+    function typeWriter(text, i = 0) {
+      if (i < text.length) {
+        typingText.innerHTML += text.charAt(i);
+        setTimeout(() => typeWriter(text, i + 1), 45);
+      }
+    }
+
+    function startSurprise() {
+      if (started) return;
+      started = true;
+
+      if (!musicPlayed) {
+        bgMusic.play().catch(() => {});
+        musicPlayed = true;
+      }
+
+      typingText.innerHTML = "";
+      typeWriter(introText);
+
+      messages.forEach((msg, index) => {
+        setTimeout(() => {
+          msg.classList.add("show");
+        }, 1800 + (index * 900));
+      });
+
+      miniNote.textContent = "Semua rasa bangga ini cuma buat kamu, cinta. ✨";
+      burstHearts(18);
+    }
+
+    function sendHug() {
+      miniNote.textContent = "Peluk virtual, cium kening, dan rasa sayang tak terbatas berhasil dikirim 🤍";
+      burstHearts(12);
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      const icons = ["💖", "💕", "💗", "💞", "🤍", "✨"];
+      heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (14 + Math.random() * 18) + "px";
+      heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    function burstHearts(total) {
+      for (let i = 0; i < total; i++) {
+        setTimeout(createHeart, i * 120);
+      }
+    }
+
+    function createSparkle() {
+      const s = document.createElement("div");
+      s.className = "sparkle";
+      s.textContent = "✦";
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.top = Math.random() * 100 + "vh";
+      s.style.fontSize = (10 + Math.random() * 10) + "px";
+      document.body.appendChild(s);
+
+      setTimeout(() => s.remove(), 2600);
+    }
+
+    setInterval(createHeart, 900);
+    setInterval(createSparkle, 700);
+  </script>
+</body>
+</html>
